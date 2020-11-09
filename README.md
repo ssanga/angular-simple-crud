@@ -1,5 +1,9 @@
 # AngularSimpleCrud
 
+Aplicación generada siguiendo el siguiente tutorial de youtube
+(https://www.youtube.com/watch?v=arGRTVdG--c&t=195s&ab_channel=FaztCode)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
 ## Development server
