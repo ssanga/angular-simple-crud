@@ -11,14 +11,14 @@ import { Employee } from './models/employee';
 export class AppComponent {
 
   employeeArray: Employee[] = [
-    { id: 1, name: "Ryan", country: "USA" },
-    { id: 2, name: "Angelica", country: "USA" },
-    { id: 3, name: "Joe", country: "USA" }
+    { id: 1, name: 'Ryan', country: 'USA' },
+    { id: 2, name: 'Angelica', country: 'USA' },
+    { id: 3, name: 'Joe', country: 'USA' }
   ];
 
   selectedEmployee: Employee = new Employee();
 
-  addOrEdit() {
+  addOrEdit(): void {
 
     if (this.selectedEmployee.id === 0) {
       this.selectedEmployee.id = this.employeeArray.length + 1;
@@ -28,14 +28,13 @@ export class AppComponent {
     this.selectedEmployee = new Employee();
   }
 
-  openForEdit(employee: Employee) {
+  openForEdit(employee: Employee): void {
     this.selectedEmployee = employee;
   }
 
-  delete() {
-
+  delete(): void {
     if (confirm('Are you sure you want to delete it')) {
-      this.employeeArray = this.employeeArray.filter(x => x != this.selectedEmployee);
+      this.employeeArray = this.employeeArray.filter(x => x !== this.selectedEmployee);
       this.selectedEmployee = new Employee();
     }
 
