@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Employee } from './models/employee';
 import { HttpClient } from '@angular/common/http';
+import { AgGridAngular } from 'ag-grid-angular';
 
 // https://www.youtube.com/watch?v=arGRTVdG--c&t=195s&ab_channel=FaztCode
 // https://www.ag-grid.com/angular-grid/
@@ -12,13 +13,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('agGrid') agGrid: AgGridAngular;
 
   constructor(private http: HttpClient) {
 
   }
 
   columnDefs = [
-    { field: 'make', sortable: true, filter: true },
+    { field: 'make', sortable: true, filter: true, checkboxSelection: true },
     { field: 'model', sortable: true, filter: true },
     { field: 'price', sortable: true, filter: true }
   ];
@@ -62,9 +64,14 @@ export class AppComponent implements OnInit {
       this.employeeArray = this.employeeArray.filter(x => x !== this.selectedEmployee);
       this.selectedEmployee = new Employee();
     }
-
-
-
   }
+
+  getSelectedRows() {
+    const selectedNodes = this.agGrid.api.getSelectedNodes();
+    const selectedData = selectedNodes.map(node => node.data );
+    const selectedDataStringPresentation = selectedData.map(node => node.make + ' ' + node.model).join(', ');
+
+    alert(`Selected nodes: ${selectedDataStringPresentation}`);
+}
 
 }
