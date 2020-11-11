@@ -10,6 +10,10 @@ import { Employee } from './models/employee';
 })
 export class AppComponent {
 
+  columnDefs = ['id','name','country']
+  rowData = [ 1, 'santi','USA'
+  ]
+
   employeeArray: Employee[] = [
     { id: 1, name: 'Ryan', country: 'USA' },
     { id: 2, name: 'Angelica', country: 'USA' },
